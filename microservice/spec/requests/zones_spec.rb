@@ -5,7 +5,7 @@ describe 'POST /zones' do
   context 'when the request is valid' do
 
     it 'creates a zone' do
-      expect{ post '/zones.json', params: valid_attributes }
+      expect{ post '/zones', params: valid_attributes }
         .to change{ Zone.count }.by(1)
 
       expect(json['title']).to eq('Mountain')
@@ -13,7 +13,7 @@ describe 'POST /zones' do
     end
 
     it 'returns status code 201' do
-      post '/zones.json', params: valid_attributes
+      post '/zones', params: valid_attributes
       expect(response).to have_http_status(201)
     end
   end
