@@ -30,17 +30,22 @@ describe 'POST /ads' do
 
   context 'when the request is invalid' do
 
-  before do
-    attribute_missing_priority = valid_attributes.except(:priority)
-    post '/ads', params: attribute_missing_priority
-  end
+    let(:attribute_missing_priority) {valid_attributes.except(:priority)}
 
     it 'returns status code 422' do
+      post '/ads', params: attribute_missing_priority
       expect(response).to have_http_status(422)
     end
 
     it 'returns a validation failure message' do
+      post '/ads', params: attribute_missing_priority
       expect(response.body).to match(/Validation failed: Priority can't be blank/)
     end
+
+    it 'returns a validation failure message' do
+      post '/ads', params: valid_attributes.except(:start_date).merge({start_date: "3"})
+      expect(response.body).to match(/invalid date formatting/)
+    end
+
   end
 end

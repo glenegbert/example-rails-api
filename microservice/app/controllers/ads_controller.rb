@@ -1,15 +1,16 @@
 class AdsController < ApplicationController
   def create
-    ad = Ad.create!(ad_params.except(:start_date, :end_date).merge(formatted_dates))
+    with_date_check do
+      attrs = ad_params.except(:start_date, :end_date)
+      ad = Ad.create!(attrs.merge(formatted_dates))
 
-    json_response(ad, :created)
+      json_response(ad, :created)
+    end
   end
 
   private
 
   def formatted_dates
-    puts "*******************"
-    puts ad_params
     start_date = Date.parse(ad_params[:start_date])
     end_date = Date.parse(ad_params[:end_date])
     {start_date: start_date, end_date: end_date}
