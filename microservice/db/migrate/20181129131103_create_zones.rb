@@ -1,8 +1,8 @@
 class CreateZones < ActiveRecord::Migration[5.2]
   def change
     create_table :zones do |t|
-      t.string :title
-      t.integer :impressions
+      t.string :title, null: false
+      t.integer :impressions, null: false
 
       t.timestamps
     end

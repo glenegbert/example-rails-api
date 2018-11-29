@@ -10,11 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_29_131103) do
+ActiveRecord::Schema.define(version: 2018_11_29_162545) do
+
+  create_table "ads", force: :cascade do |t|
+    t.string "creative", null: false
+    t.integer "priority", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.integer "goal", null: false
+    t.integer "zone_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["zone_id"], name: "index_ads_on_zone_id"
+  end
 
   create_table "zones", force: :cascade do |t|
-    t.string "title"
-    t.integer "impressions"
+    t.string "title", null: false
+    t.integer "impressions", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
