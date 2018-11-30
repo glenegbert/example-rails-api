@@ -114,13 +114,13 @@ In addition to daily impression goals, ads also have a priority assignment which
 
 To start we have 2000 impressions available and we start by assigning impressions to the ad with the highest priority:
 
-      Ad B - 100%(500) of 500 impressions will be fulfilled
+      Ad C - 100%(1000) of 1000 impressions will be fulfilled
 
-This leaves 1500 impressions available. So we assign those to the next ad in line by priority.  However we don’t have enough impressions to meet that ad’s daily goal, so it gets a partial fulfillment.
+This leaves 1000 impressions available. So we assign those to the next ad in line by priority.  However we don’t have enough impressions to meet that ad’s daily goal, so it gets a partial fulfillment.
 
-     Ad A - 1500(75%) of 2000 impressions will be fulfilled
+     Ad A - 1000(50%) of 2000 impressions will be fulfilled
 
 All available impressions for Zone 4 have now been used for this day, so the final zone will not be fulfilled at all.
 
-    Ad C - 0(0%) of 1000 impressions will be fulfilled
+    Ad B - 0(0%) of 1000 impressions will be fulfilled
 

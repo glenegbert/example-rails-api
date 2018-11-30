@@ -27,7 +27,7 @@ module ZoneAdForecast
         .where("start_date <= ? AND end_date >= ?",
                Date.parse(date),
                Date.parse(date))
-        .order(:priority)
+        .order(priority: :desc)
     end
   end
 end
