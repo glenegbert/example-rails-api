@@ -3,8 +3,8 @@ describe 'POST /ads' do
   let(:zone) { create(:zone) }
   let(:valid_attributes) { { creative: '<div>Ad Copy</div>',
                              priority: 2,
-                             start_date: 1.week.ago.to_date.to_s,
-                             end_date: 2.days.ago.to_date.to_s,
+                             start_date: "2018-11-22",
+                             end_date: "2018-11-27",
                              goal: 4000,
                              zone_id: zone.id
                           } }

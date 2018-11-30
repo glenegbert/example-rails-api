@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :zone do
-    title { "zone title" }
+    sequence :title do |n|
+      "zone-#{n}"
+    end
     impressions { 1000 }
   end
 end

@@ -6,6 +6,8 @@ describe Zone, type: :model do
   end
 
   context 'validations' do
+    before {create(:zone)}
+
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:impressions) }
     it { is_expected.to validate_uniqueness_of(:title) }
