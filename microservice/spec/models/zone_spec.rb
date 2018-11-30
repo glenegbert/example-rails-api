@@ -1,12 +1,12 @@
-require "rails_helper"
+require 'rails_helper'
 
 describe Zone, type: :model do
-  it "instantiates" do
-    expect {create(:zone)}.to change {Zone.count}.by(1)
+  it 'instantiates' do
+    expect { create(:zone) }.to change { Zone.count }.by(1)
   end
 
   context 'validations' do
-    before {create(:zone)}
+    before { create(:zone) }
 
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:impressions) }

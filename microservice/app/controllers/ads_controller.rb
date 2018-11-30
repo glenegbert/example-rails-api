@@ -13,7 +13,7 @@ class AdsController < ApplicationController
   def formatted_dates
     start_date = Date.parse(ad_params[:start_date])
     end_date = Date.parse(ad_params[:end_date])
-    {start_date: start_date, end_date: end_date}
+    { start_date: start_date, end_date: end_date }
   end
 
   def ad_params
