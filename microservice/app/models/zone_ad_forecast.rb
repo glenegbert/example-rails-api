@@ -1,4 +1,4 @@
-module ZoneAdForcast
+module ZoneAdForecast
   def self.forecast(zone_id, date)
     impressions = Zone.find(zone_id).impressions.to_f
     ads(zone_id, date).reduce([]) do |accum, ad|

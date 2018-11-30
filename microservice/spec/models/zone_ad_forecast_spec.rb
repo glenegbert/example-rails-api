@@ -1,5 +1,5 @@
 require "rails_helper"
-describe ZoneAdForcast  do
+describe ZoneAdForecast  do
   let(:zone) { create(:zone, impressions: 4000) }
   let(:date) { "2017-11-01" }
 
