@@ -10,7 +10,7 @@ describe Zone, type: :model do
     [:title, :impressions].each do |attr|
       it { is_expected.to validate_presence_of(attr) }
     end
-    it { is_expected.to validate_uniqueness_of(:title) }
+    it { is_expected.to validate_uniqueness_of(:title).case_insensitive }
   end
 
   context 'relationships' do
