@@ -17,7 +17,7 @@ You can run tests using `rspec` in console or test manually by using an HTTP cli
 This API has 3 available endpoints with the parameters in the examples below(all parameters are required).  All dates should be in ISO 8601 format.
 
 
-**POST /ads**
+**POST /ads** - creates an ad
 
 ```
   Example Request
@@ -69,7 +69,7 @@ This API has 3 available endpoints with the parameters in the examples below(all
 ```
   
 
-**POST /reports** - a list of ads for given zone with the fulfillment forecast for the given day
+**POST /reports** - responds with an array of ads for given zone with the percentage fulfillment forecast for the given date
 
 
 ```
