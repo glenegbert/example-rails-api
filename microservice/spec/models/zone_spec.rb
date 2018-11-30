@@ -7,9 +7,9 @@ describe Zone, type: :model do
 
   context 'validations' do
     before { create(:zone) }
-
-    it { is_expected.to validate_presence_of(:title) }
-    it { is_expected.to validate_presence_of(:impressions) }
+    [:title, :impressions].each do |attr|
+      it { is_expected.to validate_presence_of(attr) }
+    end
     it { is_expected.to validate_uniqueness_of(:title) }
   end
 

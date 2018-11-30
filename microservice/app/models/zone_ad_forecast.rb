@@ -12,7 +12,7 @@ module ZoneAdForecast
   class << self
     def add_to_report(available_impressions, ad, report)
       percentage = percentage_available(available_impressions, ad)
-      percentage = percentage > 100.00 ? 100.00 : percentage
+      percentage = (percentage > 100.00 || ad.goal == 0) ? 100.00 : percentage
       report.push(ad_id: ad.id, percentage: percentage)
     end
 

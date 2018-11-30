@@ -10,23 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_181_129_162_545) do
-  create_table 'ads', force: :cascade do |t|
-    t.string 'creative', null: false
-    t.integer 'priority', null: false
-    t.date 'start_date', null: false
-    t.date 'end_date', null: false
-    t.integer 'goal', null: false
-    t.integer 'zone_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['zone_id'], name: 'index_ads_on_zone_id'
+ActiveRecord::Schema.define(version: 2018_11_30_202408) do
+
+  create_table "ads", force: :cascade do |t|
+    t.string "creative", null: false
+    t.integer "priority", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.integer "goal", null: false
+    t.integer "zone_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["zone_id"], name: "index_ads_on_zone_id_orderd"
   end
 
-  create_table 'zones', force: :cascade do |t|
-    t.string 'title', null: false
-    t.integer 'impressions', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "zones", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "impressions", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
 end

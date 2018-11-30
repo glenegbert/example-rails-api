@@ -6,11 +6,9 @@ RSpec.describe Ad, type: :model do
   end
 
   context 'validations' do
-    it { is_expected.to validate_presence_of(:creative) }
-    it { is_expected.to validate_presence_of(:priority) }
-    it { is_expected.to validate_presence_of(:start_date) }
-    it { is_expected.to validate_presence_of(:end_date) }
-    it { is_expected.to validate_presence_of(:goal) }
+    [:creative, :priority, :start_date, :end_date, :goal].each do |attr|
+      it { is_expected.to validate_presence_of(attr) }
+    end
   end
 
   context 'relationships' do
