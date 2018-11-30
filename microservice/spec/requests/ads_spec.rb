@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 describe 'POST /ads' do
   let(:zone) { create(:zone) }
   let(:valid_attributes) { { creative: '<div>Ad Copy</div>',
@@ -30,19 +31,19 @@ describe 'POST /ads' do
 
   context 'when the request is invalid' do
 
-    let(:attribute_missing_priority) {valid_attributes.except(:priority)}
+    let(:attributes_missing_priority) {valid_attributes.except(:priority)}
 
     it 'returns status code 422' do
-      post '/ads', params: attribute_missing_priority
+      post '/ads', params: attributes_missing_priority
       expect(response).to have_http_status(422)
     end
 
-    it 'returns a validation failure message' do
-      post '/ads', params: attribute_missing_priority
+    it 'returns a validation failure message for missing attribute' do
+      post '/ads', params: attributes_missing_priority
       expect(response.body).to match(/Validation failed: Priority can't be blank/)
     end
 
-    it 'returns a validation failure message' do
+    it 'returns a validation failure message for invalid date format' do
       post '/ads', params: valid_attributes.except(:start_date).merge({start_date: "3"})
       expect(response.body).to match(/invalid date formatting/)
     end
