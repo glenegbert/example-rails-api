@@ -3,21 +3,23 @@
 Get started by cloning this repo and running
 
   `bundle`
-
-  `rails s`
+  
+  `rake db:migrate`
 
   `rake db:seed`
+  
+  `rails s`
 
-You can run tests using ```rspec``` in console or test manually by using an HTTP client such as https://httpie.org/.
+You can run tests using `rspec` in console or test manually by using an HTTP client such as https://httpie.org/.
 
 ## **Usage**
 
 This API has 3 available endpoints with the parameters in the examples below(all parameters are required).  All dates should be in ISO 8601 format.
 
 
-**POST /ads**
+**POST /ads** - creates an ad
 
-  ```
+```
   Example Request
     {
       "creative": "<div>Ad Here</div>",
@@ -27,9 +29,9 @@ This API has 3 available endpoints with the parameters in the examples below(all
       "priority": 1,
       "zone_id": 3
     }
-  ```
-
-  ```
+ ```
+ 
+ ```
   Example Response
     {
       "created_at": "2018-11-30T14:19:08.804Z",
@@ -42,21 +44,20 @@ This API has 3 available endpoints with the parameters in the examples below(all
       "updated_at": "2018-11-30T14:19:08.804Z",
       "zone_id": 3
     }
-    ```
-
-
+  ```
+    
+    
 **POST /zones** - creates a zone
 
-   ```
+```  
    Example Request
      {
        "impressions": 1000,
        "title": "US/Mountain"
      }
-    ```
+```   
 
-
-   ```
+```
    Example Response
      {
        "created_at": "2018-11-30T14:28:44.390Z",
@@ -65,20 +66,21 @@ This API has 3 available endpoints with the parameters in the examples below(all
        "title": "US/Mountain",
        "updated_at": "2018-11-30T14:28:44.390Z"
      }
-    ```
+```
+  
 
-**POST /reports** - a list of ads for given zone with the fulfillment forecast for the given day
+**POST /reports** - responds with an array of ads for given zone with the percentage fulfillment forecast for the given date
 
 
-   ```
+```
   Example Request
     {
       "date": "2018-01-08",
       "zone_id": 3
     }
-   ```
+```  
 
-   ```
+```
   Example Response
     [
         {
@@ -90,7 +92,7 @@ This API has 3 available endpoints with the parameters in the examples below(all
             "percentage": 75.0
         }
     ]
-   ```
+ ```
 
 
 ## **How We Calculate Ad Forecasts**
