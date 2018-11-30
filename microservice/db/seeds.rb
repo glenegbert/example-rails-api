@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Ad.destroy_all
+Zone.destroy_all
+
+Zone.create!({ id: 123, title: 'Test Zone', impressions: 5000 })
+
+creative = "<div>Ad</div>"
+Ad.create!([
+  { id: 111, creative: creative, zone_id: 123, start_date: '2017-12-01', end_date: '2017-12-10', priority: 8, goal: 15000 },
+  { id: 222, creative: creative, zone_id: 123, start_date: '2017-12-01', end_date: '2017-12-30', priority: 4, goal: 120000 },
+  { id: 333, creative: creative, zone_id: 123, start_date: '2017-12-10', end_date: '2017-12-14', priority: 6, goal: 10000 },
+  { id: 444, creative: creative, zone_id: 123, start_date: '2017-12-01', end_date: '2017-12-30', priority: 2, goal: 120000 }
+])

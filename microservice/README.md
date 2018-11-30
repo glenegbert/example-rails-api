@@ -6,6 +6,8 @@ Get started by cloning this repo and running
 
   `rails s`
 
+  `rake db:seed`
+
 You can run tests using ```rspec``` in console or test manually by using an HTTP client such as https://httpie.org/.
 
 ## **Usage**
