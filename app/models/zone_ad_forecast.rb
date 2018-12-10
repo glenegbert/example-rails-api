@@ -1,7 +1,8 @@
 module ZoneAdForecast
   def self.forecast(zone_id, date)
-    available_impressions = Zone.find(zone_id).impressions.to_f
-    ads(zone_id, date).each_with_object([]) do |ad, accum|
+    zone = Zone.find(zone_id)
+    available_impressions = zone.impressions.to_f
+    ads(zone, date).each_with_object([]) do |ad, accum|
       add_to_report(available_impressions, ad, accum)
       next_impressions = available_impressions - daily_goal(ad)
       # keep available impressions from being negative so next calculations work
@@ -24,9 +25,8 @@ module ZoneAdForecast
       ad.goal / (ad.start_date..ad.end_date).count
     end
 
-    def ads(zone_id, date)
-      Zone
-        .find(zone_id)
+    def ads(zone, date)
+      zone
         .ads
         .where('start_date <= ? AND end_date >= ?',
                Date.parse(date),
