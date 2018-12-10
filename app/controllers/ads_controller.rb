@@ -1,6 +1,6 @@
 class AdsController < ApplicationController
   def create
-    with_date_check do
+    with_date_parse_rescue do
       attrs = ad_params.except(:start_date, :end_date)
       ad = Ad.create!(attrs.merge(formatted_dates))
 
