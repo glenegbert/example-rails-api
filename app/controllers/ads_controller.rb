@@ -1,11 +1,9 @@
 class AdsController < ApplicationController
   def create
-    with_date_parse_rescue do
-      attrs = ad_params.except(:start_date, :end_date)
-      ad = Ad.create!(attrs.merge(formatted_dates))
+    attrs = ad_params.except(:start_date, :end_date)
+    ad = Ad.create!(attrs.merge(formatted_dates))
 
-      json_response(ad, :created)
-    end
+    json_response(ad, :created)
   end
 
   private

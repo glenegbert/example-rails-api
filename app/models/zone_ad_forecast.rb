@@ -26,11 +26,12 @@ module ZoneAdForecast
     end
 
     def ads(zone, date)
+      date = Date.parse(date)
       zone
         .ads
         .where('start_date <= ? AND end_date >= ?',
-               Date.parse(date),
-               Date.parse(date))
+                date,
+                date)
         .order(priority: :desc)
     end
   end
