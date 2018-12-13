@@ -38,12 +38,12 @@ describe ZoneAdForecast do
 
   it 'handles multiple forcasts of 0' do
     create_ad(priority: 2, goal: 15_000, id: 111)
-    create_ad(priority: 3, goal: 5000, id: 112)
-    create_ad(priority: 1, goal: 80_000, id: 113)
+    create_ad(priority: 3, goal: 80_000, id: 112)
+    create_ad(priority: 1, goal: 8_000, id: 113)
     expect(described_class.forecast(zone.id, date))
-      .to eq([{ ad_id: 112, percentage: 100.00 },
-              { ad_id: 111, percentage: 100.0 },
-              { ad_id: 113, percentage: 25.0 }])
+      .to eq([{ ad_id: 112, percentage: 50.00 },
+              { ad_id: 111, percentage: 0.0 },
+              { ad_id: 113, percentage: 0.0 }])
   end
 
   it 'handles multiple forcasts with the same priority and same demand' do
