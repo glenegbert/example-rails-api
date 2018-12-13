@@ -19,20 +19,17 @@ module ZoneAdForecast
     end
 
     def ads_to_report(available_impressions, ads_with_same_priority, report)
-      if ads_with_same_priority.count == 1
-        ad = ads_with_same_priority[0]
-        available = [daily_goal(ad), available_impressions].min
-        ad_to_report(available, ad, report)
-        available
-      else
-        min_assignment_amount =
-          available_impressions / ads_with_same_priority.count
-        sorted = ads_with_same_priority.sort { |ad| daily_goal(ad) }.reverse
-        ad, *ads = sorted
-        available = [daily_goal(ad), min_assignment_amount].min
-        ad_to_report(available, ad, report)
-        available + ads_to_report(available_impressions - available, ads, report)
-      end
+      used = 0
+      ads_with_same_priority
+          .sort { |ad| daily_goal(ad) }
+          .reverse
+          .each_with_index do |ad, index|
+            remaining = ads_with_same_priority[index..-1]
+            available = [ daily_goal(ad), (available_impressions-used)/remaining.count ].min
+            ad_to_report(available, ad, report)
+            used = used + available
+          end
+      used
     end
 
     def percentage_available(available_impressions, ad)
